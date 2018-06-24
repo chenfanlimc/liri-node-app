@@ -8,7 +8,9 @@ var fs = require("fs");
 var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
 var function_type = process.argv[2];
-var search_query = process.argv[3];
+var temp_response = process.argv;
+temp_response.splice(0, 3);
+var search_query = temp_response;
 
 function spotify_search(search_q) {
     spotify.search({
