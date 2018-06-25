@@ -20,7 +20,7 @@ function spotify_search(search_q) {
             return console.log("Error Result: " + err);
         }
         var search_result = data.tracks.items[0];
-        console.log("You searched for a song...")
+        console.log("You searched for a song named: " + search_q.join(" ") + "...")
         console.log("...");
         console.log("...");
         console.log("Artist Name: " + search_result.artists[0].name);
@@ -30,7 +30,7 @@ function spotify_search(search_q) {
         console.log("Preview URL (if available): " + search_result.preview_url);
         console.log("------")
         console.log("Album Name: " + search_result.album.name);
-        fs.appendFile("log.txt", "\n\nYou searched for a song...\n...\n...\nArtist Name: "
+        fs.appendFile("log.txt", "\n\nYou searched for a song named: " + search_q.join(" ") + "...\n...\n...\nArtist Name: "
             + search_result.artists[0].name + "\n------\nTrack Name: " + search_result.name +
             "\n------\nPreview URL (if available): " + search_result.preview_url +
             "\n------\nAlbum Name: " + search_result.album.name, function (err, data) {
@@ -73,7 +73,7 @@ function movie_search(movie_title) {
         if (!error && response.statusCode === 200) {
             // console.log("Information about movie: " + body);
             // console.log("Look into movie info with JSON.parse: " + JSON.stringify(JSON.parse(body)))
-            console.log("You searched for a movie...");
+            console.log("You searched for a movie named: " + movie_title.join(" ") + "...");
             console.log("...");
             console.log("...");
             console.log("Movie Title: " + JSON.parse(body).Title);
@@ -91,7 +91,7 @@ function movie_search(movie_title) {
             console.log("Plot: " + JSON.parse(body).Plot);
             console.log("----");
             console.log("Cast Members: " + JSON.parse(body).Actors)
-            fs.appendFile("log.txt", "\n\nYou searched for a movie...\n...\n...\nMovie Title: "
+            fs.appendFile("log.txt", "\n\nYou searched for a movie named: " + movie_title.join(" ") +"...\n...\n...\nMovie Title: "
                 + JSON.parse(body).Title + "\n------\nRelease Year: " + JSON.parse(body).Year +
                 "\n------\nIMDb Rating: " + JSON.parse(body).imdbRating +
                 "\n------\nRotten Tomato Rating: " + JSON.parse(body).Ratings[1].Value +
